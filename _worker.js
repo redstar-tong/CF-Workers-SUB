@@ -19,6 +19,7 @@ hysteria2://775b2e65-0283-4e3f-a34f-f32ddb702e0c@104.168.77.74:30414?sni=www.bin
 vmess://ew0KICAidiI6ICIyIiwNCiAgInBzIjogIlZtZXNzLVJhY2tuZXJkIiwNCiAgImFkZCI6ICIxOTguMTQ0LjE4MS40NSIsDQogICJwb3J0IjogIjg4ODAiLA0KICAiaWQiOiAiNmI4ZTFlZDUtMDkzMS00Njc3LWJhNWItYjJjNDNiZjlmZTdlIiwNCiAgImFpZCI6ICIwIiwNCiAgInNjeSI6ICJhdXRvIiwNCiAgIm5ldCI6ICJ3cyIsDQogICJ0eXBlIjogIm5vbmUiLA0KICAiaG9zdCI6ICJ3d3cuYmluZy5jb20iLA0KICAicGF0aCI6ICI2YjhlMWVkNS0wOTMxLTQ2NzctYmE1Yi1iMmM0M2JmOWZlN2Utdm0iLA0KICAidGxzIjogIiIsDQogICJzbmkiOiAiIiwNCiAgImFscG4iOiAiIiwNCiAgImZwIjogIiINCn0=
 vless://6b8e1ed5-0931-4677-ba5b-b2c43bf9fe7e@198.144.181.45:35552?encryption=none&flow=xtls-rprx-vision&security=reality&sni=www.yahoo.com&fp=chrome&pbk=sjlqho12-yqkyH69SJ0WP2xJxX7d1Ntjj4wEdSt-22k&sid=8396416b&type=tcp&headerType=none#Vless-RackNerd
 hysteria2://893a0448-617a-48a9-a70f-5da3656cf688@142.171.229.39:58762?sni=www.bing.com&alpn=h3&insecure=1#hy2-cloudcone.seri01.xyz
+vless://96748986-19ca-47f2-ba76-49ea7e716651@162.159.160.19:443?encryption=none&security=tls&sni=node.seri01.xyz&type=ws&host=node.seri01.xyz&path=%2Fvless-8f3a2c#CF-Node
 `;
 
 let urls = [];
