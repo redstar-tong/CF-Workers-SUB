@@ -22,7 +22,7 @@ vless://96748986-19ca-47f2-ba76-49ea7e716651@162.159.160.19:443?encryption=none&
 `;
 
 let urls = [];
-let subConverter = "sub.id9.cc"; // 修改点 1：更换为支持新版 sing-box 的 API 节点
+let subConverter = "api.v1.mk"; // 修改点 1：更换为支持新版 sing-box 的 API 节点
 let subConfig = "https://raw.githubusercontent.com/cmliu/ACL4SSR/main/Clash/config/ACL4SSR_Online_MultiCountry.ini"; //订阅配置文件
 let subProtocol = 'https';
 
