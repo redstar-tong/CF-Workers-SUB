@@ -22,7 +22,7 @@ vless://96748986-19ca-47f2-ba76-49ea7e716651@162.159.160.19:443?encryption=none&
 `;
 
 let urls = [];
-let subConverter = "sub.xray.zone"; // 修改点 1：更换为支持新版 sing-box 的 API 节点
+let subConverter = "sub.id9.cc"; // 修改点 1：更换为支持新版 sing-box 的 API 节点
 let subConfig = "https://raw.githubusercontent.com/cmliu/ACL4SSR/main/Clash/config/ACL4SSR_Online_MultiCountry.ini"; //订阅配置文件
 let subProtocol = 'https';
 
@@ -329,18 +329,38 @@ function clashFix(content) {
 
 // 修改点 3：增加 Sing-Box 格式修复函数，自动清理旧版的 dns.fakeip 语法
 function singboxFix(content) {
+	// 如果返回的内容不是以 JSON 的 '{' 开头，说明后端返回了错误信息或非 JSON 内容，直接原样返回
+	if (!content.trim().startsWith('{')) {
+		return content;
+	}
 	try {
 		let config = JSON.parse(content);
 		if (config && config.dns) {
 			let inet4_range = "198.18.0.0/15";
 			let inet6_range = "fc00::/18";
 
-			// 如果包含了旧版 dns.fakeip 属性，提取其网段并删除顶级配置项
 			if (config.dns.fakeip) {
 				if (config.dns.fakeip.inet4_range) inet4_range = config.dns.fakeip.inet4_range;
 				if (config.dns.fakeip.inet6_range) inet6_range = config.dns.fakeip.inet6_range;
 				delete config.dns.fakeip;
 			}
+
+			if (Array.isArray(config.dns.servers)) {
+				for (let server of config.dns.servers) {
+					if (server.address === "fakeip" || server.tag === "dns_fakeip" || server.tag === "fakeip") {
+						delete server.address;
+						server.type = "fakeip";
+						server.inet4_range = inet4_range;
+						server.inet6_range = inet6_range;
+					}
+				}
+			}
+		}
+		return JSON.stringify(config, null, 2);
+	} catch (e) {
+		return content;
+	}
+}
 
 			// 更新 servers 列表中的 fakeip 格式
 			if (Array.isArray(config.dns.servers)) {
