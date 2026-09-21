@@ -329,8 +329,7 @@ function clashFix(content) {
 
 // 修改点 3：增加 Sing-Box 格式修复函数，自动清理旧版的 dns.fakeip 语法
 function singboxFix(content) {
-	// 如果返回的内容不是以 JSON 的 '{' 开头，说明后端返回了错误信息或非 JSON 内容，直接原样返回
-	if (!content.trim().startsWith('{')) {
+	if (!content || !content.trim().startsWith('{')) {
 		return content;
 	}
 	try {
